@@ -1,0 +1,42 @@
+{
+    "paths": [
+        {
+            "name": "/create-link-token",
+            "lambdaFunction": "createLinkToken",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            },
+            "policyResourceName": "/create-link-token"
+        }
+    ],
+    "resourceName": "createlinktoken",
+    "apiName": "createlinktoken",
+    "functionArns": [
+        {
+            "lambdaFunction": "createLinkToken"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 0,
+        "authRoleName": "amplify-piggybank-dev-202033-authRole",
+        "unAuthRoleName": "amplify-piggybank-dev-202033-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "createLinkToken",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

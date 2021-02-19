@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-piggybank-dev-202033-authRole",
+      "UnauthRoleArn": "arn:aws:iam::613712184351:role/amplify-piggybank-dev-202033-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::613712184351:role/amplify-piggybank-dev-202033-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-piggybank-dev-202033-deployment",
+      "UnauthRoleName": "amplify-piggybank-dev-202033-unauthRole",
+      "StackName": "amplify-piggybank-dev-202033",
+      "StackId": "arn:aws:cloudformation:us-west-2:613712184351:stack/amplify-piggybank-dev-202033/aabff8b0-7250-11eb-916d-06d8b07d6177",
+      "AmplifyAppId": "d7hzd5lnvxhx8"
+    },
+    "categories": {
+      "auth": {
+        "piggybanke4383213": {}
+      }
+    }
+  }
+}
