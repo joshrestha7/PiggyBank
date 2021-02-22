@@ -1,2 +1,0 @@
-# piggybank
-Money management app

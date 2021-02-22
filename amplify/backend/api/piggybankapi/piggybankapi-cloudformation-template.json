@@ -14,15 +14,15 @@
         },
     
     
-          "functioncreateLinkTokenName": {
+          "functionlinktokenfunctionName": {
             "Type": "String",
-            "Default": "functioncreateLinkTokenName"
+            "Default": "functionlinktokenfunctionName"
           },
         
           
-          "functioncreateLinkTokenArn": {
+          "functionlinktokenfunctionArn": {
             "Type": "String",
-            "Default": "functioncreateLinkTokenArn"
+            "Default": "functionlinktokenfunctionArn"
           }
         
           
@@ -41,13 +41,13 @@
     },
     "Resources": {
         
-        "PolicyAPIGWcreatelinktokenauth": {
+        "PolicyAPIGWpiggybankapiauth": {
             "DependsOn": [
-              "createlinktoken"
+              "piggybankapi"
             ],
             "Type": "AWS::IAM::Policy",
             "Properties": {
-              "PolicyName": "PolicyAPIGWcreatelinktokenauth",
+              "PolicyName": "PolicyAPIGWpiggybankapiauth",
               "Roles": [
                 {"Ref": "authRoleName"}
               ],
@@ -77,7 +77,7 @@
                             },
                             ":",
                             {
-                              "Ref": "createlinktoken"
+                              "Ref": "piggybankapi"
                             },
                             "/",
                             {
@@ -108,7 +108,7 @@
                             },
                             ":",
                             {
-                              "Ref": "createlinktoken"
+                              "Ref": "piggybankapi"
                             },
                             "/",
                             {
@@ -143,7 +143,7 @@
                             },
                             ":",
                             {
-                              "Ref": "createlinktoken"
+                              "Ref": "piggybankapi"
                             },
                             "/",
                             {
@@ -174,7 +174,7 @@
                             },
                             ":",
                             {
-                              "Ref": "createlinktoken"
+                              "Ref": "piggybankapi"
                             },
                             "/",
                             {
@@ -209,7 +209,7 @@
                             },
                             ":",
                             {
-                              "Ref": "createlinktoken"
+                              "Ref": "piggybankapi"
                             },
                             "/",
                             {
@@ -240,7 +240,7 @@
                             },
                             ":",
                             {
-                              "Ref": "createlinktoken"
+                              "Ref": "piggybankapi"
                             },
                             "/",
                             {
@@ -275,7 +275,7 @@
                             },
                             ":",
                             {
-                              "Ref": "createlinktoken"
+                              "Ref": "piggybankapi"
                             },
                             "/",
                             {
@@ -306,7 +306,7 @@
                             },
                             ":",
                             {
-                              "Ref": "createlinktoken"
+                              "Ref": "piggybankapi"
                             },
                             "/",
                             {
@@ -319,72 +319,6 @@
                               ]
                             },
                               "/PATCH",
-                            "/create-link-token"
-                          ]
-                        ]
-                      }
-                    
-                      ,
-                    
-                    
-                      {
-                        "Fn::Join": [
-                          "",
-                          [
-                            "arn:aws:execute-api:",
-                            {
-                              "Ref": "AWS::Region"
-                            },
-                            ":",
-                            {
-                              "Ref": "AWS::AccountId"
-                            },
-                            ":",
-                            {
-                              "Ref": "createlinktoken"
-                            },
-                            "/",
-                            {
-                              "Fn::If": [
-                                "ShouldNotCreateEnvResources",
-                                "Prod", 
-                                {
-                                  "Ref": "env"
-                                } 
-                              ]
-                            },
-                              "/DELETE",
-                            "/create-link-token/*"
-                          ]
-                        ]
-                      },
-                                            {
-                        "Fn::Join": [
-                          "",
-                          [
-                            "arn:aws:execute-api:",
-                            {
-                              "Ref": "AWS::Region"
-                            },
-                            ":",
-                            {
-                              "Ref": "AWS::AccountId"
-                            },
-                            ":",
-                            {
-                              "Ref": "createlinktoken"
-                            },
-                            "/",
-                            {
-                              "Fn::If": [
-                                "ShouldNotCreateEnvResources",
-                                "Prod", 
-                                {
-                                  "Ref": "env"
-                                } 
-                              ]
-                            },
-                              "/DELETE",
                             "/create-link-token"
                           ]
                         ]
@@ -405,16 +339,16 @@
         
         
         
-      "createlinktoken": {
+      "piggybankapi": {
         "Type": "AWS::ApiGateway::RestApi",
         "Properties": {
           "Description": "",
-          "Name": "createlinktoken",
+          "Name": "piggybankapi",
           "Body": {
             "swagger": "2.0",
             "info": {
               "version": "2018-05-24T17:52:00Z",
-              "title": "createlinktoken"
+              "title": "piggybankapi"
             },
             "host": {
                 "Fn::Join": [
@@ -542,7 +476,7 @@
                             
                             {
                                 
-                                "Ref": "functioncreateLinkTokenArn"
+                                "Ref": "functionlinktokenfunctionArn"
                             },
                             
                             "/invocations"
@@ -647,7 +581,7 @@
                           
                           {
                             
-                            "Ref": "functioncreateLinkTokenArn"
+                            "Ref": "functionlinktokenfunctionArn"
                           },
                           
                           "/invocations"
@@ -704,12 +638,12 @@
                   
         
         
-        "functioncreateLinkTokenPermissioncreatelinktoken": {
+        "functionlinktokenfunctionPermissionpiggybankapi": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
                 "FunctionName": 
                     {
-                        "Ref":  "functioncreateLinkTokenName"
+                        "Ref":  "functionlinktokenfunctionName"
                     },
                     
                     "Action": "lambda:InvokeFunction",
@@ -728,7 +662,7 @@
                             },
                             ":",
                             {
-                                "Ref": "createlinktoken"
+                                "Ref": "piggybankapi"
                             },
                             "/*/*/*"
                         ]
@@ -739,7 +673,7 @@
         
         
         
-      "DeploymentAPIGWcreatelinktoken": {
+      "DeploymentAPIGWpiggybankapi": {
         "Type": "AWS::ApiGateway::Deployment",
         "Properties": {
           "Description": "The Development stage deployment of your API.",
@@ -753,7 +687,7 @@
             ]
           },
           "RestApiId": {
-            "Ref": "createlinktoken"
+            "Ref": "piggybankapi"
           }
         }
       }
@@ -761,15 +695,15 @@
     "Outputs": {
         "RootUrl": {
             "Description": "Root URL of the API gateway",
-            "Value": {"Fn::Join": ["", ["https://", {"Ref": "createlinktoken"}, ".execute-api.", {"Ref": "AWS::Region"}, ".amazonaws.com/", {"Fn::If": ["ShouldNotCreateEnvResources","Prod", {"Ref": "env"} ]}]]}
+            "Value": {"Fn::Join": ["", ["https://", {"Ref": "piggybankapi"}, ".execute-api.", {"Ref": "AWS::Region"}, ".amazonaws.com/", {"Fn::If": ["ShouldNotCreateEnvResources","Prod", {"Ref": "env"} ]}]]}
         },
         "ApiName": {
           "Description": "API Friendly name",
-          "Value": "createlinktoken"
+          "Value": "piggybankapi"
         },
         "ApiId": {
           "Description": "API ID (prefix of API URL)",
-          "Value": {"Ref": "createlinktoken"}
+          "Value": {"Ref": "piggybankapi"}
         }
     }
   }

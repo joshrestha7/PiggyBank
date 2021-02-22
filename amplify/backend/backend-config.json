@@ -1,6 +1,6 @@
 {
   "auth": {
-    "piggybanke4383213": {
+    "piggybank23361897": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -8,20 +8,40 @@
     }
   },
   "function": {
-    "createLinkToken": {
+    "linktokenfunction": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "userdb",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ]
+    }
+  },
+  "storage": {
+    "userdb": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
     }
   },
   "api": {
-    "createlinktoken": {
+    "piggybankapi": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "createLinkToken",
+          "resourceName": "linktokenfunction",
           "attributes": [
             "Name",
             "Arn"

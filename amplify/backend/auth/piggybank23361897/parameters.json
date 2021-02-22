@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "piggybanke4383213_identitypool_e4383213",
-    "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "piggybe4383213",
-    "userPoolName": "piggybanke4383213_userpool_e4383213",
+    "identityPoolName": "piggybank23361897_identitypool_23361897",
+    "allowUnauthenticatedIdentities": true,
+    "resourceNameTruncated": "piggyb23361897",
+    "userPoolName": "piggybank23361897_userpool_23361897",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,10 +28,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "piggybe4383213_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "piggyb23361897_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "e4383213",
-    "resourceName": "piggybanke4383213",
+    "sharedId": "23361897",
+    "resourceName": "piggybank23361897",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -45,9 +45,15 @@
             "Arn"
         ]
     },
-    "useDefault": "default",
+    "useDefault": "defaultSocial",
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
-    "dependsOn": []
+    "dependsOn": [],
+    "hostedUI": true,
+    "hostedUIDomainName": "piggybankauth",
+    "authProvidersUserPool": [],
+    "hostedUIProviderMeta": "[]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\"],\"LogoutURLs\":[\"http://localhost:3000/\"]}",
+    "authProviders": []
 }

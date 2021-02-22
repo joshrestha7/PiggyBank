@@ -2,37 +2,36 @@
     "paths": [
         {
             "name": "/create-link-token",
-            "lambdaFunction": "createLinkToken",
+            "lambdaFunction": "linktokenfunction",
             "privacy": {
                 "private": true,
                 "auth": [
                     "/POST",
                     "/GET",
                     "/PUT",
-                    "/PATCH",
-                    "/DELETE"
+                    "/PATCH"
                 ]
             },
             "policyResourceName": "/create-link-token"
         }
     ],
-    "resourceName": "createlinktoken",
-    "apiName": "createlinktoken",
+    "resourceName": "piggybankapi",
+    "apiName": "piggybankapi",
     "functionArns": [
         {
-            "lambdaFunction": "createLinkToken"
+            "lambdaFunction": "linktokenfunction"
         }
     ],
     "privacy": {
         "auth": 1,
         "unauth": 0,
-        "authRoleName": "amplify-piggybank-dev-202033-authRole",
-        "unAuthRoleName": "amplify-piggybank-dev-202033-unauthRole"
+        "authRoleName": "amplify-piggybank-dev-25337-authRole",
+        "unAuthRoleName": "amplify-piggybank-dev-25337-unauthRole"
     },
     "dependsOn": [
         {
             "category": "function",
-            "resourceName": "createLinkToken",
+            "resourceName": "linktokenfunction",
             "attributes": [
                 "Name",
                 "Arn"
