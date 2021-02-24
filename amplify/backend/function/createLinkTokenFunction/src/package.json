@@ -1,14 +1,13 @@
 {
-  "name": "linktokenfunction",
+  "name": "createLinkTokenFunction",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "aws-sdk": "^2.580.0",
     "aws-serverless-express": "^3.3.5",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
-    "plaid": "^7.1.0"
+    "plaid": "^8.1.6"
   },
   "devDependencies": {},
   "scripts": {

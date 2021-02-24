@@ -15,10 +15,21 @@
       "auth": {
         "piggybank23361897": {}
       },
+      "storage": {
+        "userdb": {
+          "tableName": "userdb",
+          "region": "us-west-2",
+          "arn": "arn:aws:dynamodb:us-west-2:613712184351:table/userdb",
+          "partitionKeyName": "id",
+          "partitionKeyType": "S",
+          "sortKeyName": "email",
+          "sortKeyType": "S"
+        }
+      },
       "function": {
-        "linktokenfunction": {
+        "createLinkTokenFunction": {
           "deploymentBucketName": "amplify-piggybank-dev-25337-deployment",
-          "s3Key": "amplify-builds/linktokenfunction-49702f74597575764d33-build.zip"
+          "s3Key": "amplify-builds/createLinkTokenFunction-39656a585769656a4355-build.zip"
         }
       }
     }

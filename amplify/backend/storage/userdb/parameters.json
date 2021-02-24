@@ -1,5 +1,4 @@
 {
-    "tableName": "userdb",
-    "partitionKeyName": "id",
-    "partitionKeyType": "S"
+  "resourceName": "userdb",
+  "serviceType": "imported"
 }

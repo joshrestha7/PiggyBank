@@ -8,30 +8,18 @@
     }
   },
   "function": {
-    "linktokenfunction": {
+    "createLinkTokenFunction": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "storage",
-          "resourceName": "userdb",
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
-        }
-      ]
+      "service": "Lambda"
     }
   },
   "storage": {
     "userdb": {
       "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
+      "serviceType": "imported",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
     }
   },
   "api": {
@@ -41,7 +29,7 @@
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "linktokenfunction",
+          "resourceName": "createLinkTokenFunction",
           "attributes": [
             "Name",
             "Arn"
