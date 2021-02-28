@@ -8,18 +8,16 @@ See the License for the specific language governing permissions and limitations 
 
 
 
-
-var express = require('express')
-var bodyParser = require('body-parser')
+const AWS = require('aws-sdk')
 var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
-const plaid = require('plaid')
+var bodyParser = require('body-parser')
+var express = require('express')
 
-//create a Plaid client
-const plaidClient = new plaid.Client({
-  clientID: process.env.PLAID_CLIENT_ID,
-  secret: process.env.PLAID_SECRET,
-  env: plaid.environments.sandbox
-});
+AWS.config.update({ region: process.env.TABLE_REGION });
+
+const dynamodb = new AWS.DynamoDB.DocumentClient();
+
+let tableName = "userdb";
 
 // declare a new express app
 var app = express()
@@ -33,25 +31,28 @@ app.use(function(req, res, next) {
   next()
 });
 
-app.post('/create-link-token', function(req, res) {
-  if ('id' in req.body) {
-    let id = req.body['id'];
-    
-    let params = {
-      user: {
-        client_user_id: id
-      },
-      client_name: 'PiggyBank',
-      products: ['transactions'],
-      country_codes: ['US'],
-      language: 'en'
-    };
-    plaidClient.createLinkToken(params, (err, response) => {
+app.post("/get-user/id/email", function(req, res) {
+  if ('id' in req.body && 'email' in req.body) {
+    let idValue = req.body['id'];
+    let emailValue = req.body['email'];
+    let getItemParams = {
+      TableName: tableName,
+      Key: {
+        id: idValue,
+        email: emailValue
+      }
+    }
+      
+    dynamodb.get(getItemParams,(err, data) => {
       if(err) {
         res.statusCode = 500;
-        res.json({error: err});
-      } else{
-        res.json({success: 'link token created!', linkToken: response.link_token})
+        res.json({error: 'Could not get user: ' + err.message});
+      } else {
+        if (data.Item) {
+          res.json(data.Item);
+        } else {
+          res.json(data);
+        }
       }
     });
   } else {
@@ -59,6 +60,7 @@ app.post('/create-link-token', function(req, res) {
     res.json({error: 'id is required'});
   }
 });
+
 
 app.listen(3000, function() {
     console.log("App started")

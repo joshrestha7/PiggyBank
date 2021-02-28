@@ -29,7 +29,11 @@
       "function": {
         "createLinkTokenFunction": {
           "deploymentBucketName": "amplify-piggybank-dev-25337-deployment",
-          "s3Key": "amplify-builds/createLinkTokenFunction-39656a585769656a4355-build.zip"
+          "s3Key": "amplify-builds/createLinkTokenFunction-77594531384268796d58-build.zip"
+        },
+        "getUser": {
+          "deploymentBucketName": "amplify-piggybank-dev-25337-deployment",
+          "s3Key": "amplify-builds/getUser-4b336c50657261674866-build.zip"
         }
       }
     }
