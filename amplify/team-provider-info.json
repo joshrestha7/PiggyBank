@@ -31,9 +31,9 @@
           "deploymentBucketName": "amplify-piggybank-dev-25337-deployment",
           "s3Key": "amplify-builds/createLinkTokenFunction-77594531384268796d58-build.zip"
         },
-        "getUser": {
+        "setAccessTokenFunction": {
           "deploymentBucketName": "amplify-piggybank-dev-25337-deployment",
-          "s3Key": "amplify-builds/getUser-4b336c50657261674866-build.zip"
+          "s3Key": "amplify-builds/setAccessTokenFunction-336b38766a444f4e3061-build.zip"
         }
       }
     }

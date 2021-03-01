@@ -12,7 +12,7 @@ const Start = ({ credentials, loadCredentials, getLink, linkToken }) => {
   return (
     <header className="App-header">
       Hello
-      <Link linkToken={linkToken}/>
+      <Link credentials={credentials} linkToken={linkToken}/>
     </header>
   );
 }

@@ -13,7 +13,7 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "getUser": {
+    "setAccessTokenFunction": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
@@ -56,7 +56,7 @@
         },
         {
           "category": "function",
-          "resourceName": "getUser",
+          "resourceName": "setAccessTokenFunction",
           "attributes": [
             "Name",
             "Arn"

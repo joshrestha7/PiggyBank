@@ -9,12 +9,12 @@
             "policyResourceName": "/create-link-token"
         },
         {
-            "name": "/get-user",
-            "lambdaFunction": "getUser",
+            "name": "/set-access-token",
+            "lambdaFunction": "setAccessTokenFunction",
             "privacy": {
                 "open": true
             },
-            "policyResourceName": "/get-user"
+            "policyResourceName": "/set-access-token"
         }
     ],
     "resourceName": "piggybankapi",
@@ -24,7 +24,7 @@
             "lambdaFunction": "createLinkTokenFunction"
         },
         {
-            "lambdaFunction": "getUser"
+            "lambdaFunction": "setAccessTokenFunction"
         }
     ],
     "privacy": {
@@ -44,12 +44,12 @@
         },
         {
             "category": "function",
-            "resourceName": "getUser",
+            "resourceName": "setAccessTokenFunction",
             "attributes": [
                 "Name",
                 "Arn"
             ]
         }
     ],
-    "uuid": "89367b92"
+    "uuid": "b7fbbfe4"
 }

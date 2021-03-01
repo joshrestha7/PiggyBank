@@ -12,6 +12,14 @@ const AWS = require('aws-sdk')
 var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
 var bodyParser = require('body-parser')
 var express = require('express')
+const plaid = require('plaid')
+
+//create a Plaid client
+const plaidClient = new plaid.Client({
+  clientID: process.env.PLAID_CLIENT_ID,
+  secret: process.env.PLAID_SECRET,
+  env: plaid.environments.sandbox
+});
 
 AWS.config.update({ region: process.env.TABLE_REGION });
 
@@ -31,33 +39,42 @@ app.use(function(req, res, next) {
   next()
 });
 
-app.post("/get-user/id/email", function(req, res) {
-  if ('id' in req.body && 'email' in req.body) {
+app.put("/set-access-token", function(req, res) {
+  if ('id' in req.body && 'email' in req.body && 'publicToken' in req.body) {
     let idValue = req.body['id'];
     let emailValue = req.body['email'];
-    let getItemParams = {
-      TableName: tableName,
-      Key: {
-        id: idValue,
-        email: emailValue
-      }
-    }
-      
-    dynamodb.get(getItemParams,(err, data) => {
-      if(err) {
+    let publicTokenValue = req.body['publicToken'];
+    
+    plaidClient.exchangePublicToken(publicTokenValue, (err, response) => {
+      if (err) {
         res.statusCode = 500;
-        res.json({error: 'Could not get user: ' + err.message});
+        res.json({error: 'Could not exchange public token for access token ' + err});
       } else {
-        if (data.Item) {
-          res.json(data.Item);
-        } else {
-          res.json(data);
+        let putItemParams = {
+          TableName: tableName,
+          Item: {
+            id: idValue,
+            email: emailValue,
+            items: [
+              {itemID: response['item_id'], accessToken: response['access_token']}
+            ]
+          }
         }
+
+        dynamodb.put(putItemParams, (err, data) => {
+          if(err) {
+            res.statusCode = 500;
+            res.json({error: err, url: req.url, body: req.body});
+          } else{
+            res.json({success: 'put call succeed!', url: req.url})
+          }
+        });
       }
-    });
+    })
+
   } else {
     res.statusCode = 500;
-    res.json({error: 'id is required'});
+    res.json({error: 'id, email and public token are required'});
   }
 });
 

@@ -55,12 +55,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "getUser",
+            "setAccessTokenFunction",
             {
               "Fn::Join": [
                 "",
                 [
-                  "getUser",
+                  "setAccessTokenFunction",
                   "-",
                   {
                     "Ref": "env"
@@ -97,12 +97,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "piggybankLambdaRole1b23e14d",
+            "piggybankLambdaRole3eb3e539",
             {
               "Fn::Join": [
                 "",
                 [
-                  "piggybankLambdaRole1b23e14d",
+                  "piggybankLambdaRole3eb3e539",
                   "-",
                   {
                     "Ref": "env"

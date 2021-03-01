@@ -16,7 +16,7 @@ export const getCurrentAuthCredentials = () => async dispatch => {
   }
 }
 
-export const getUser = () => async dispatch => {
+export const getTransactions = () => async dispatch => {
 
 }
 

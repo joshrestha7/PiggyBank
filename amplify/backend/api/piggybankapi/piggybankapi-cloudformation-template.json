@@ -28,15 +28,15 @@
           
           
     
-          "functiongetUserName": {
+          "functionsetAccessTokenFunctionName": {
             "Type": "String",
-            "Default": "functiongetUserName"
+            "Default": "functionsetAccessTokenFunctionName"
           },
         
           
-          "functiongetUserArn": {
+          "functionsetAccessTokenFunctionArn": {
             "Type": "String",
-            "Default": "functiongetUserArn"
+            "Default": "functionsetAccessTokenFunctionArn"
           }
         
           
@@ -305,7 +305,7 @@
                 }
               },   
               
-              "/get-user": {
+              "/set-access-token": {
                 "options": {
                   "consumes": [
                     "application/json"
@@ -391,7 +391,7 @@
                             
                             {
                                 
-                                "Ref": "functiongetUserArn"
+                                "Ref": "functionsetAccessTokenFunctionArn"
                             },
                             
                             "/invocations"
@@ -404,7 +404,7 @@
                   }
                 }
               },
-              "/get-user/{proxy+}": {
+              "/set-access-token/{proxy+}": {
                 "options": {
                   "consumes": [
                     "application/json"
@@ -490,7 +490,7 @@
                           
                           {
                             
-                            "Ref": "functiongetUserArn"
+                            "Ref": "functionsetAccessTokenFunctionArn"
                           },
                           
                           "/invocations"
@@ -581,12 +581,12 @@
         },
         
         
-        "functiongetUserPermissionpiggybankapi": {
+        "functionsetAccessTokenFunctionPermissionpiggybankapi": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
                 "FunctionName": 
                     {
-                        "Ref":  "functiongetUserName"
+                        "Ref":  "functionsetAccessTokenFunctionName"
                     },
                     
                     "Action": "lambda:InvokeFunction",
@@ -616,7 +616,7 @@
         
         
         
-      "DeploymentAPIGWpiggybankapi89367b92": {
+      "DeploymentAPIGWpiggybankapib7fbbfe4": {
         "Type": "AWS::ApiGateway::Deployment",
         "Properties": {
           "Description": "The Development stage deployment of your API.",
